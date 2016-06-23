@@ -9,7 +9,7 @@ public class Token {
     
     // Variável de Tamanho do Vetor
         // Customizar conforme necessário
-    private final Integer tamanho = 11;
+    private final Integer tamanho = 6;
     // Variáveis da Classe
     private Integer[] quantidade = new Integer[tamanho];
     private String[] descricao = new String[tamanho];
@@ -22,31 +22,31 @@ public class Token {
             quantidade[i] = 0;
             switch (i) {
                 // Adicionar os exemplos da linguagem
-                // Não esquecer de cortar o que não precisamos
-                // Trocar
+                // Trocar e não esquecer de cortar o que não precisamos
                 case 0:
-                    descricao[i] = "Variavel";
-                    exemplos[i] = "a10 b15 aaa varB teste";
+                    descricao[i] = "Tipos";
+                    //exemplos[i] = "a10 b15 aaa varB teste";
+                    exemplos[i] = "mi mf mb ms";  // inteiro float boolean string
                     break;
                 case 1:
                     descricao[i] = "Operadores";
-                    exemplos[i] = "+ * - /\"";
+                    exemplos[i] = "m+ m* m- m/"; // adicao, multi, sub, divisao
                     break;
                 case 2:
-                    descricao[i] = "Condições";
-                    exemplos[i] = "< > => <= - | ! =";
+                    descricao[i] = "Palavras Reservadas";
+                    exemplos[i] = "msera mvaifazendo msair m> <m =m m& ^^"; //maior, menor, igual, and, or
                     break;
                 case 3:
-                    descricao[i] = "Texto";
-                    exemplos[i] = "'Texto 056456'";
+                    descricao[i] = "Condições";
+                    exemplos[i] = "m> <m =m =\\ m& ^^";
                     break;
                 case 4:
-                    descricao[i] = "Número";
-                    exemplos[i] = "145 0.12 41.1";
+                    descricao[i] = "Variaveis";
+                    exemplos[i] = "mentr[A-Za-z0-9]";
                     break;
-                case 5:
-                    descricao[i] = "Quebra de linha";
-                    exemplos[i] = "/n";
+                /*case 5:
+                    descricao[i] = "Texto";
+                    exemplos[i] = "'Texto 056456'"; // mentr entrada de texto
                     break;
                 case 6:
                     descricao[i] = "Escopo";
@@ -64,7 +64,8 @@ public class Token {
                     descricao[i] = "Geral";
                     exemplos[i] = "I O";
                     break;
-                case 10:
+                case 10:*/
+                case 5:
                     descricao[i] = "Erro";
                     exemplos[i] = "45fff¨'";
                     break;
@@ -89,22 +90,23 @@ public class Token {
                 String[] tokens = linha.split(" ");
                 for (String aux: tokens) {
                     // Trocar pelas expressões regulares da nossa linguagem
-                    if (aux.matches("[a-z]([a-zA-Z0-9]+)*")) {
+                    if (aux.matches("m[ifbs]")) {
+                        //"mi mf mb ms"
                         quantidade[0]++;
                         // adiciona na lista de tokens
-                    } else if (aux.matches("[\\/]|[\\*]|[\\+]|[\\-]")) {
+                    } else if (aux.matches("m[+-:x]")) {
                         quantidade[1]++;
                         // adiciona na lista de tokens
                     } else if (aux.matches("([></|=!&])|<=|=>")) {
                         quantidade[2]++;
                         // adiciona na lista de tokens
-                    } else if (aux.matches("'[^\n]*'")) {
+                    } else if (aux.matches("m[>&]") || aux.matches("[<=]m") || aux.matches("[^^]") || aux.matches("=//")) {
                         quantidade[3]++;
                         // adiciona na lista de tokens
-                    } else if (aux.matches("[0-9]+(.[0-9]+)*|[0-9]*.[0-9]+")) {
+                    } else if (aux.matches("mentr[A-Za-z0-9]")) {
                         quantidade[4]++;
                         // adiciona na lista de tokens
-                    } else if (aux.matches("[\n]")) {
+                    } /*else if (aux.matches("'[^\n]*'")) {
                         quantidade[5]++;
                         // adiciona na lista de tokens
                     } else if (aux.matches("[\t]")) {
@@ -119,8 +121,8 @@ public class Token {
                     } else if (aux.matches("[(]|[\\,]|[)]")) {
                         quantidade[9]++;
                         // adiciona na lista de tokens
-                    } else {
-                        quantidade[10]++;
+                    }*/ else {
+                        quantidade[5]++;
                         // adiciona na lista de tokens
                     }
                 }
@@ -165,6 +167,4 @@ public class Token {
         return resultado;
     }
     
-    
-
 }
