@@ -71,6 +71,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel1.setText("Código Fonte");
 
+        txtCodigo.setEditable(false);
         txtCodigo.setColumns(20);
         txtCodigo.setRows(5);
         jScrollPane1.setViewportView(txtCodigo);
@@ -84,6 +85,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel2.setText("Resultado");
 
+        txtResultado.setEditable(false);
         txtResultado.setColumns(20);
         txtResultado.setRows(5);
         jScrollPane2.setViewportView(txtResultado);
@@ -139,8 +141,7 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
