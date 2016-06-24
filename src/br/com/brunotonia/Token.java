@@ -67,7 +67,7 @@ public class Token {
                 case 10:*/
                 case 5:
                     descricao[i] = "Erro";
-                    exemplos[i] = "45fff¨'";
+                    exemplos[i] = "sertanejo universitário¨'";
                     break;
             }
         }
@@ -94,16 +94,18 @@ public class Token {
                         //"mi mf mb ms"
                         quantidade[0]++;
                         // adiciona na lista de tokens
-                    } else if (aux.matches("m[+-:x]")) {
+                    } else if (aux.matches("m[+-:x=]")) {
                         quantidade[1]++;
                         // adiciona na lista de tokens
-                    } else if (aux.matches("([></|=!&])|<=|=>")) {
+                    } else if (aux.matches("##m") || aux.matches("m##") || aux.matches("mentr") || aux.matches("msair") ||
+                            aux.matches("merro") || aux.matches("!") || aux.matches("msera") || aux.matches("mouentao") ||
+                            aux.matches("mvaifazendo")) {
                         quantidade[2]++;
                         // adiciona na lista de tokens
                     } else if (aux.matches("m[>&]") || aux.matches("[<=]m") || aux.matches("[^^]") || aux.matches("=//")) {
                         quantidade[3]++;
                         // adiciona na lista de tokens
-                    } else if (aux.matches("mentr[A-Za-z0-9]")) {
+                    } else if (aux.matches("mentr[A-Za-z0-9]+")) {
                         quantidade[4]++;
                         // adiciona na lista de tokens
                     } /*else if (aux.matches("'[^\n]*'")) {
