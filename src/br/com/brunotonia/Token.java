@@ -4,16 +4,24 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Token {
+
+    /* Sugestões da Diomara */
+    // filtrar erros
+    // gravar palavra do erro e linha para exibir
+    // ajustar documentacao
     
     // Variável de Tamanho do Vetor
-        // Customizar conforme necessário
+    // Customizar conforme necessário
     private final Integer tamanho = 6;
     // Variáveis da Classe
     private Integer[] quantidade = new Integer[tamanho];
     private String[] descricao = new String[tamanho];
     private String[] exemplos = new String[tamanho];
+    private List<String> erros = new ArrayList<>();
 
     public Token() {
         // Inicializa variáveis
@@ -88,7 +96,7 @@ public class Token {
             // Pelo texto todo...
             while (linha != null) {
                 String[] tokens = linha.split(" ");
-                for (String aux: tokens) {
+                for (String aux : tokens) {
                     // Trocar pelas expressões regulares da nossa linguagem
                     if (aux.matches("m[ifbs]")) {
                         //"mi mf mb ms"
@@ -97,9 +105,9 @@ public class Token {
                     } else if (aux.matches("m[+-:x=]")) {
                         quantidade[1]++;
                         // adiciona na lista de tokens
-                    } else if (aux.matches("##m") || aux.matches("m##") || aux.matches("mentr") || aux.matches("msair") ||
-                            aux.matches("merro") || aux.matches("!") || aux.matches("msera") || aux.matches("mouentao") ||
-                            aux.matches("mvaifazendo")) {
+                    } else if (aux.matches("##m") || aux.matches("m##") || aux.matches("mentr") || aux.matches("msair")
+                            || aux.matches("merro") || aux.matches("!") || aux.matches("msera") || aux.matches("mouentao")
+                            || aux.matches("mvaifazendo")) {
                         quantidade[2]++;
                         // adiciona na lista de tokens
                     } else if (aux.matches("m[>&]") || aux.matches("[<=]m") || aux.matches("[^^]") || aux.matches("=//")) {
@@ -108,23 +116,13 @@ public class Token {
                     } else if (aux.matches("mentr[A-Za-z0-9]+")) {
                         quantidade[4]++;
                         // adiciona na lista de tokens
-                    } /*else if (aux.matches("'[^\n]*'")) {
+                    } else if (aux.matches("[0-9]+") || aux.equals("\n")) {
+                        // ruidos na string
+                        // valores
+                    } else {
+                        System.out.print(aux);
                         quantidade[5]++;
-                        // adiciona na lista de tokens
-                    } else if (aux.matches("[\t]")) {
-                        quantidade[6]++;
-                        // adiciona na lista de tokens
-                    } else if (aux.matches("¨[\\¨fmior]*")) {
-                        quantidade[7]++;
-                        // adiciona na lista de tokens
-                    } else if (aux.matches("[IO]")) {
-                        quantidade[8]++;
-                        // adiciona na lista de tokens
-                    } else if (aux.matches("[(]|[\\,]|[)]")) {
-                        quantidade[9]++;
-                        // adiciona na lista de tokens
-                    }*/ else {
-                        quantidade[5]++;
+                        erros.add(aux);
                         // adiciona na lista de tokens
                     }
                 }
@@ -162,11 +160,18 @@ public class Token {
 
     @Override
     public String toString() {
-        String resultado = "Quantidade - Token\n";
+        String resultado = "Quantidade - Token";
         for (Integer i = 0; i < tamanho; i++) {
-            resultado += quantidade[i] + " - " + descricao[i] + "\n";
+            resultado += "\n" + quantidade[i] + " - " + descricao[i];
         }
+        resultado += ": ";
+        for (String aux: erros) {
+            resultado += aux + ", ";
+        }
+        resultado += "\n";
         return resultado;
     }
     
+    
+
 }
