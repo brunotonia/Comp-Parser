@@ -1,0 +1,22 @@
+m## m
+	m mentrA, mentrB, mentrC, mentrD
+
+	mOUT 'Digite uma valor'
+	mIN mentrA
+
+	mOUT 'Digite uma valor'
+	mIN mentrB
+
+	mOUT ' Digite + para adição\n Digite – para Subtração'
+	mIN mentrC
+
+	m = mentrC 'm+' m
+		m mentrD + mentrA mentrB
+		mOUT m+ 'Valor da adição é: ' mentrD
+	m = mentrC 'm-' m
+		m mentrD - mentrA mentrB
+		mOUT m+ 'Valor da subtração é: ' mentrD
+	m
+		mOUT 'Simbolo não encontrado'
+
+##m

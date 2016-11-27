@@ -116,7 +116,7 @@ public class Token {
                     } else if (aux.matches("mentr[A-Za-z0-9]+")) {
                         quantidade[4]++;
                         // adiciona na lista de tokens
-                    } else if (aux.matches("[0-9]+") || aux.equals("\n")) {
+                    } else if (aux.matches("[0-9]+") || aux.equals("\n") || aux.equals("\r\n") || aux.equals("\t")) {
                         // ruidos na string
                         // valores
                     } else {
@@ -171,7 +171,5 @@ public class Token {
         resultado += "\n";
         return resultado;
     }
-    
-    
 
 }

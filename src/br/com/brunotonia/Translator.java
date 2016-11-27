@@ -7,6 +7,9 @@ public class Translator {
         if (token.matches("[0-9]+")) {
             resultado = token;
         }
+        if (token.startsWith("mentr")) {
+            resultado = token.substring(5);
+        }
         
         
         return resultado;

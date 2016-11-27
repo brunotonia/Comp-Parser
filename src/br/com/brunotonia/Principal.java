@@ -117,14 +117,15 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
-                                .addComponent(btnProcessar)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnProcessar))
+                            .addComponent(jSeparator2)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(344, 344, 344)))
+                        .addGap(341, 341, 341)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -183,7 +184,7 @@ public class Principal extends javax.swing.JFrame {
                 reader = new InputStreamReader(stream);
                 // Bufferiza o arquivo de texto
                 br = new BufferedReader(reader);
-                // Carrega a primeira linha
+                // CarregarTokens a primeira linha
                 String linha = br.readLine();
                 // Pelo texto todo...
                 while (linha != null) {
@@ -203,7 +204,9 @@ public class Principal extends javax.swing.JFrame {
             token = new Token();
             token.separarTokens(file);
             txtResultado.setText(token.toString());
-            parser.povoaPilha(file);
+            //parser
+            parser.CarregarTokens(file);
+            System.out.println(parser.Executar());
         }
     }//GEN-LAST:event_btnProcessarActionPerformed
 
