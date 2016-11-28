@@ -120,7 +120,7 @@ public class Token {
                         // ruidos na string
                         // valores
                     } else {
-                        System.out.print(aux);
+                        //System.out.print(aux);
                         quantidade[5]++;
                         erros.add(aux);
                         // adiciona na lista de tokens

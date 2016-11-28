@@ -201,12 +201,16 @@ public class Principal extends javax.swing.JFrame {
     private void btnProcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessarActionPerformed
         // TODO add your handling code here:
         if (file != null) {
-            token = new Token();
-            token.separarTokens(file);
-            txtResultado.setText(token.toString());
+            //token = new Token();
+            //token.separarTokens(file);
+            //txtResultado.setText(token.toString());
             //parser
             parser.CarregarTokens(file);
+            parser.ImprimirTokens();
+            System.out.println();
             System.out.println(parser.Executar());
+            System.out.println();
+            System.out.println(parser.getLog());
         }
     }//GEN-LAST:event_btnProcessarActionPerformed
 
